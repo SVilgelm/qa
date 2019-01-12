@@ -1,0 +1,15 @@
+[submodule "neutron-tempest-plugin"]
+	path = neutron-tempest-plugin
+	url = git@github.com:openstack/neutron-tempest-plugin
+[submodule "patrole"]
+	path = patrole
+	url = git@github.com:openstack/patrole
+[submodule "tempest"]
+	path = tempest
+	url = git@github.com:openstack/tempest
+[submodule "tungsten-tempest"]
+	path = tungsten-tempest
+	url = git@github.com:tungstenfabric/tungsten-tempest.git
+[submodule "stestr"]
+	path = stestr
+	url = git@github.com:mtreinish/stestr.git

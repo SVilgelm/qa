@@ -1,0 +1,20 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+tempest = {path = "./tempest",editable = true}
+neutron-tempest-plugin = {path = "./neutron-tempest-plugin",editable = true}
+patrole = {path = "./patrole",editable = true}
+tungsten-tempest = {path = "./tungsten-tempest",editable = true}
+stestr = {path = "./stestr",editable = true}
+keystone = {git = "https://github.com/openstack/keystone.git"}
+nova = {git = "https://github.com/openstack/nova.git"}
+neutron = {git = "https://github.com/openstack/neutron.git"}
+cinder = {git = "https://github.com/openstack/cinder.git"}
+
+[requires]
+python_version = "3.7"
