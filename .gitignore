@@ -2,3 +2,4 @@
 /tests/tempest.log
 /tests/patrole.log
 /tests/tempest_lock/
+policy.json

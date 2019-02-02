@@ -33,6 +33,17 @@ crudini --set "/vagrant/tests/etc/tempest.conf" identity uri_v3 "http://${IP}/id
 
 echo "source ~/devstack/openrc admin admin" >> ~/.bashrc
 
+for p in cinder keystone neutron nova; do
+
+DIR="/vagrant/tests/etc/$p"
+mkdir -p $DIR
+oslopolicy-policy-generator --namespace $p --output-file $DIR/policy.json 2>/dev/null
+
+done
+
+mkdir -p /vagrant/tests/etc/glance/
+cp /etc/glance/policy.json /vagrant/tests/etc/glance/
+
 SCRIPT
 
 
