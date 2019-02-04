@@ -43,7 +43,7 @@ host.
 
 ```bash
 vagrant up
-pipenv install
+pipenv install -d
 pipenv shell
 tempest run --workspace tests --list-tests | wc -l
     3138
