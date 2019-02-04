@@ -33,16 +33,18 @@ crudini --set "/vagrant/tests/etc/tempest.conf" identity uri_v3 "http://${IP}/id
 
 echo "source ~/devstack/openrc admin admin" >> ~/.bashrc
 
-for p in cinder keystone neutron nova; do
+for p in cinder keystone neutron nova glance; do
 
-DIR="/vagrant/tests/etc/$p"
-mkdir -p $DIR
-oslopolicy-policy-generator --namespace $p --output-file $DIR/policy.json 2>/dev/null
+  DIR="/vagrant/tests/etc/$p"
+  mkdir -p $DIR
+  if [ $p = "glance" ]
+  then
+    cp /etc/$p/policy.json $DIR/policy.json
+  else    
+    oslopolicy-policy-generator --namespace $p --output-file $DIR/policy.json 2>/dev/null
+  fi
 
 done
-
-mkdir -p /vagrant/tests/etc/glance/
-cp /etc/glance/policy.json /vagrant/tests/etc/glance/
 
 SCRIPT
 
@@ -51,7 +53,7 @@ Vagrant.configure("2") do |cfg|
   cfg.vm.define :devstack, primary: true do |c|
     c.vm.box = "ubuntu/bionic64"
     c.vm.provision :shell, privileged: false, inline: $script
-    c.vm.network "public_network", bridge: "en0: Wi-Fi (AirPort)"
+    c.vm.network "private_network", type: "dhcp", adapter: 2
     c.vm.provider :virtualbox do |v|
       v.memory = 7168
       v.cpus = 4
