@@ -14,6 +14,7 @@ testtools = ">=2.2.0"
 openstackdocstheme = ">=1.18.1"
 Pygments = "*"
 Sphinx = "!=1.6.7,!=1.6.6,>=1.6.2"
+yapf = "*"
 
 [packages]
 neutron-tempest-plugin = {path = "./neutron-tempest-plugin",editable = true}
